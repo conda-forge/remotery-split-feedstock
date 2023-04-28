@@ -65,6 +65,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-remotery-green.svg)](https://anaconda.org/conda-forge/remotery) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/remotery.svg)](https://anaconda.org/conda-forge/remotery) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/remotery.svg)](https://anaconda.org/conda-forge/remotery) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/remotery.svg)](https://anaconda.org/conda-forge/remotery) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-remotery--static-green.svg)](https://anaconda.org/conda-forge/remotery-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/remotery-static.svg)](https://anaconda.org/conda-forge/remotery-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/remotery-static.svg)](https://anaconda.org/conda-forge/remotery-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/remotery-static.svg)](https://anaconda.org/conda-forge/remotery-static) |
 
 Installing remotery-split
@@ -77,41 +78,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `remotery-static` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `remotery, remotery-static` can be installed with `conda`:
 
 ```
-conda install remotery-static
-```
-
-or with `mamba`:
-
-```
-mamba install remotery-static
-```
-
-It is possible to list all of the versions of `remotery-static` available on your platform with `conda`:
-
-```
-conda search remotery-static --channel conda-forge
+conda install remotery remotery-static
 ```
 
 or with `mamba`:
 
 ```
-mamba search remotery-static --channel conda-forge
+mamba install remotery remotery-static
+```
+
+It is possible to list all of the versions of `remotery` available on your platform with `conda`:
+
+```
+conda search remotery --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search remotery --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search remotery-static --channel conda-forge
+mamba repoquery search remotery --channel conda-forge
 
-# List packages depending on `remotery-static`:
-mamba repoquery whoneeds remotery-static --channel conda-forge
+# List packages depending on `remotery`:
+mamba repoquery whoneeds remotery --channel conda-forge
 
-# List dependencies of `remotery-static`:
-mamba repoquery depends remotery-static --channel conda-forge
+# List dependencies of `remotery`:
+mamba repoquery depends remotery --channel conda-forge
 ```
 
 

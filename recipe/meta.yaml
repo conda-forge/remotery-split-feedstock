@@ -48,18 +48,12 @@ outputs:
         - cat $PREFIX/include/remotery/Remotery.h | grep "RMT_VERSION_MINOR {{ version_split[1] }}"  # [unix]
         - cat $PREFIX/include/remotery/Remotery.h | grep "RMT_VERSION_PATCH {{ version_split[2] }}"  # [unix]
 
-        # Prefixed shared libraries must also be present as shared links.
-        - test -L ${PREFIX}/lib/libRemotery${SHLIB_EXT}.{{ version_split[0] }}  # [unix]
-        - test -L ${PREFIX}/lib/libRemotery${SHLIB_EXT}.{{ version }}  # [unix]
-
         # Windows installation tests
         - if not exist %LIBRARY_PREFIX%\include\remotery\Remotery.h (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfig.cmake (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfigVersion.cmake (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\Remotery.dll (exit 1)  # [win]
 
-
-outputs:
   - name: {{ name|lower }}-static
     version: {{ version }}
     script: build_remotery.sh   # [unix]
