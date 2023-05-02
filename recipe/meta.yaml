@@ -4,7 +4,7 @@
 {% set sha256 = "5740532229fe4da8d8ab8e310cc6a38d3f198f59314f5ecf1a072aca25f91709" %}
 
 package:
-   name: {{ name|lower }}-split
+  name: {{ name|lower }}-split
 
 source:
   url: https://github.com/{{ organization }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
@@ -20,7 +20,7 @@ build:
 outputs:
   - name: {{ name|lower }}
     version: {{ version }}
-    script: build_remotery.sh   # [unix]
+    script: build_remotery.sh  # [unix]
     script: build_remotery.bat  # [win]
 
     requirements:
@@ -56,7 +56,7 @@ outputs:
 
   - name: {{ name|lower }}-static
     version: {{ version }}
-    script: build_remotery.sh   # [unix]
+    script: build_remotery.sh  # [unix]
     script: build_remotery.bat  # [win]
 
     requirements:
@@ -92,7 +92,7 @@ outputs:
 
 about:
   home: https://github.com/{{ organization }}/{{ name }}/
-  summary: 'Single C file, Realtime CPU/GPU Profiler with Remote Web Viewer'
+  summary: Single C file, Realtime CPU/GPU Profiler with Remote Web Viewer
   description: |
     A realtime CPU/GPU profiler hosted in a single C file with a viewer that runs in a web browser.
   license: Apache-2.0
