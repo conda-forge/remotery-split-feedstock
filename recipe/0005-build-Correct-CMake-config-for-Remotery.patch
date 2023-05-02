@@ -1,0 +1,60 @@
+From f823da52fae4912b21fc4957f3d650a3303eaa8f Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Fri, 28 Apr 2023 11:23:54 +0200
+Subject: [PATCH 2/3] build: Correct CMake config for Remotery
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ CMakeLists.txt          | 9 +++++++--
+ RemoteryConfig.cmake.in | 8 ++++----
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a7872de..017d50f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -180,15 +180,20 @@ export(
+ )
+ 
+ # Configure 'RemoteryConfig.cmake' for a build tree
++set(REMOTERY_CONFIG_CODE "####### Expanded from \@Remotery_CONFIG_CODE\@ #######\n")
++set(REMOTERY_CONFIG_CODE "${REMOTERY_CONFIG_CODE}set(CMAKE_MODULE_PATH \"${CMAKE_CURRENT_SOURCE_DIR}/cmake;\${CMAKE_MODULE_PATH}\")\n")
++set(REMOTERY_CONFIG_CODE "${REMOTERY_CONFIG_CODE}####### End of expanded section on Remotery_CONFIG_CODE #######\n")
++
+ configure_package_config_file(
+     ${PROJECT_NAME}Config.cmake.in
+     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+-    INSTALL_DESTINATION ${PROJECT_BINARY_DIR}    )
++    INSTALL_DESTINATION ${PROJECT_BINARY_DIR}
++)
+ 
+ # Configure 'RemoteryConfig.cmake' for an install tree
+ configure_package_config_file(
+     ${PROJECT_NAME}Config.cmake.in
+-    "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}Config.cmake"
++    "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${PROJECT_NAME}Config.cmake"
+     INSTALL_DESTINATION ${REMOTERY_CMAKECONFIG_INSTALL_DIR}
+ )
+ 
+diff --git a/RemoteryConfig.cmake.in b/RemoteryConfig.cmake.in
+index 269a0a8..128a8cf 100644
+--- a/RemoteryConfig.cmake.in
++++ b/RemoteryConfig.cmake.in
+@@ -2,10 +2,10 @@
+ #
+ # This module defines the following variables in your project::
+ #
+-#   REMOTERY_FOUND          - True if remotery is available
+-#   REMOTERY_INCLUDE_DIRS   - Include directories for remotery
+-#   REMOTERY_LIBRARY        - The library for dynamically linking
+-#   REMOTERY_STATIC_LIBRARY - The library for statically linking
++#   Remotery_FOUND          - True if remotery is available
++#   Remotery_INCLUDE_DIR    - Include directories for remotery
++#   Remotery_LIBRARY        - The library for dynamically linking
++#   Remotery_STATIC_LIBRARY - The library for statically linking
+ 
+ @PACKAGE_INIT@
+ 
+-- 
+2.40.0
+
