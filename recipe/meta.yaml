@@ -17,6 +17,7 @@ source:
     - 0005-build-Correct-CMake-config-for-Remotery.patch
     - 0006-build-Correct-case-for-CMake-config.patch
     - 0007-build-Remove-outdated-comment.patch
+    - 0008-Use-remotery-over-Remotery-for-stubs.patch
 
 build:
   number: 1
@@ -40,11 +41,11 @@ outputs:
         # Unix installation tests
         - test -d ${PREFIX}/include/remotery  # [unix]
         - test -f ${PREFIX}/include/remotery/Remotery.h  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryConfig.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryConfigVersion.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryTargets.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryTargets-release.cmake  # [unix]
-        - test -e ${PREFIX}/lib/libRemotery${SHLIB_EXT}  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryConfig.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryConfigVersion.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryTargets.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryTargets-release.cmake  # [unix]
+        - test -e ${PREFIX}/lib/libremotery${SHLIB_EXT}  # [unix]
 
         # API Version tests
         {% set version_split = version.split('.') %}
@@ -54,9 +55,9 @@ outputs:
 
         # Windows installation tests
         - if not exist %LIBRARY_PREFIX%\include\remotery\Remotery.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfig.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfigVersion.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\bin\Remotery.dll (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\bin\remotery.dll (exit 1)  # [win]
 
   - name: {{ name|lower }}-static
     version: {{ version }}
@@ -76,11 +77,11 @@ outputs:
         # Unix installation tests
         - test -d ${PREFIX}/include/remotery  # [unix]
         - test -f ${PREFIX}/include/remotery/Remotery.h  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryConfig.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryConfigVersion.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryTargets.cmake  # [unix]
-        - test -f ${PREFIX}/lib/cmake/Remotery/RemoteryTargets-release.cmake  # [unix]
-        - test -e ${PREFIX}/lib/libRemotery.a  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryConfig.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryConfigVersion.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryTargets.cmake  # [unix]
+        - test -f ${PREFIX}/lib/cmake/remotery/remoteryTargets-release.cmake  # [unix]
+        - test -e ${PREFIX}/lib/libremotery.a  # [unix]
 
         # API Version tests
         {% set version_split = version.split('.') %}
@@ -90,9 +91,9 @@ outputs:
 
         # Windows installation tests
         - if not exist %LIBRARY_PREFIX%\include\remotery\Remotery.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfig.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\Remotery\RemoteryConfigVersion.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\Remotery_static.lib (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\remotery_static.lib (exit 1)  # [win]
 
 about:
   home: https://github.com/{{ organization }}/{{ name }}/
