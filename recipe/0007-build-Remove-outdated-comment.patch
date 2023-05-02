@@ -1,0 +1,29 @@
+From 51730e908a52332e59dce1ad8a626f4cfcbe1e0b Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Tue, 2 May 2023 16:56:48 +0200
+Subject: [PATCH] build: Remove outdated comment
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ CMakeLists.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 017d50f..fc8112d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,10 +63,7 @@ message(STATUS "${PROJECT_NAME} binary version: ${REMOTERY_BINARY_VERSION}")
+ # =============
+ 
+ option(REMOTERY_BUILD_SHARED_LIBS "Build Remotery shared library" ON)
+-option(
+-    REMOTERY_BUILD_STATIC_LIBS
+-    "Build Remotery static library (default if REMOTERY_BUILD_SHARED_LIBS is OFF" ON
+-)
++option(REMOTERY_BUILD_STATIC_LIBS "Build Remotery static library" ON)
+ 
+ message(STATUS "Build shared libraries: ${REMOTERY_BUILD_SHARED_LIBS}")
+ message(STATUS "Build static libraries: ${REMOTERY_BUILD_STATIC_LIBS}")
+-- 
+2.40.0
+
