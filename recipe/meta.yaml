@@ -17,7 +17,7 @@ source:
     - 0005-build-Correct-CMake-config-for-Remotery.patch
     - 0006-build-Correct-case-for-CMake-config.patch
     - 0007-build-Remove-outdated-comment.patch
-    - 0008-Use-remotery-over-Remotery-for-stubs.patch
+    #  - 0008-Use-remotery-over-Remotery-for-stubs.patch
 
 build:
   number: 2
