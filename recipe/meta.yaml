@@ -13,7 +13,7 @@ source:
     - 0001-build-Add-a-CMake-setup.patch
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: {{ name|lower }}
