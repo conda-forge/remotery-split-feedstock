@@ -8,6 +8,9 @@
 rm -Rf sample
 rm -Rf vis
 
+cp $RECIPE_DIR/CMakeLists.txt .
+cp $RECIPE_DIR/remoteryConfig.cmake.in .
+
 rm -rf build
 mkdir build
 cd build

@@ -10,10 +10,10 @@ source:
   url: https://github.com/{{ organization }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - 0001-build-Add-a-CMake-setup.patch
+    - 0001-Version-project.patch
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ name|lower }}
@@ -47,10 +47,11 @@ outputs:
         - cat $PREFIX/include/remotery/Remotery.h | grep "RMT_VERSION_PATCH {{ version_split[2] }}"  # [unix]
 
         # Windows installation tests
-        - if not exist %LIBRARY_PREFIX%\include\remotery\Remotery.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\bin\remotery.dll (exit 1)  # [win]
+        - if not exist %LIBRARY_INC%\remotery\Remotery.h (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_BIN%\remotery.dll (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\remotery.lib (exit 1)  # [win]
 
   - name: {{ name|lower }}-static
     version: {{ version }}
@@ -83,10 +84,10 @@ outputs:
         - cat $PREFIX/include/remotery/Remotery.h | grep "RMT_VERSION_PATCH {{ version_split[2] }}"  # [unix]
 
         # Windows installation tests
-        - if not exist %LIBRARY_PREFIX%\include\remotery\Remotery.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\remotery_static.lib (exit 1)  # [win]
+        - if not exist %LIBRARY_INC%\remotery\Remotery.h (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
+        - if not exist %LIBRARY_LIB%\remotery_static.lib (exit 1)  # [win]
 
 about:
   home: https://github.com/{{ organization }}/{{ name }}/
