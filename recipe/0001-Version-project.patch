@@ -1,0 +1,33 @@
+From bad71d77dbb479ee18bdc6590cc3998eafaa067f Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Fri, 2 Jun 2023 14:19:06 +0200
+Subject: [PATCH] Version project
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ lib/Remotery.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/lib/Remotery.h b/lib/Remotery.h
+index 06732e4..1eaf4d9 100644
+--- a/lib/Remotery.h
++++ b/lib/Remotery.h
+@@ -39,6 +39,15 @@ documented just below this comment.
+ #ifndef RMT_INCLUDED_H
+ #define RMT_INCLUDED_H
+ 
++// Project version
++#define RMT_VERSION_MAJOR 1
++#define RMT_VERSION_MINOR 2
++#define RMT_VERSION_PATCH 1
++
++// Binary version
++#define RMT_BINARY_CURRENT 1
++#define RMT_BINARY_REVISION 0
++#define RMT_BINARY_AGE 0
+ 
+ // Set to 0 to not include any bits of Remotery in your build
+ #ifndef RMT_ENABLED
+-- 
+2.40.0
+

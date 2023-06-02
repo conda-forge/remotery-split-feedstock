@@ -7,6 +7,12 @@ rmdir /Q /S sample
 rmdir /Q /S vis
 
 rmdir /Q /S build
+
+copy %RECIPE_DIR%\CMakeLists.txt .
+copy %RECIPE_DIR%\remoteryConfig.cmake.in
+
+dir /s /b /o:gn
+
 mkdir build
 cd build
 
@@ -16,6 +22,7 @@ if /I "%PKG_NAME%" == "remotery" (
         -GNinja ^
         -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
         -DCMAKE_PREFIX_PATH=%PREFIX% ^
+        -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON ^
         -DREMOTERY_BUILD_SHARED_LIBS=ON ^
         -DREMOTERY_BUILD_STATIC_LIBS=OFF
 )
