@@ -13,7 +13,7 @@ source:
     - 0001-Version-project.patch
 
 build:
-  number: 4
+  number: 5
 
 outputs:
   - name: {{ name|lower }}
