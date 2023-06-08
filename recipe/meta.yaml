@@ -13,7 +13,7 @@ source:
     - 0001-Version-project.patch
 
 build:
-  number: 4
+  number: 5
 
 outputs:
   - name: {{ name|lower }}
@@ -48,10 +48,14 @@ outputs:
 
         # Windows installation tests
         - if not exist %LIBRARY_INC%\remotery\Remotery.h (exit 1)  # [win]
-        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfig.cmake (exit 1)  # [win]
-        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfigVersion.cmake (exit 1)  # [win]
         - if not exist %LIBRARY_BIN%\remotery.dll (exit 1)  # [win]
         - if not exist %LIBRARY_LIB%\remotery.lib (exit 1)  # [win]
+
+        # Installation of CMake setup on Windows
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfig.cmake (exit 1)           # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryConfigVersion.cmake (exit 1)    # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryTargets.cmake (exit 1)          # [win]
+        - if not exist %LIBRARY_LIB%\cmake\remotery\remoteryTargets-release.cmake (exit 1)  # [win]
 
   - name: {{ name|lower }}-static
     version: {{ version }}
